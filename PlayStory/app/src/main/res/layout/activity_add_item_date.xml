@@ -19,7 +19,7 @@
         android:id="@+id/textAddTimeStory2"
         android:layout_width="255dp"
         android:layout_height="43dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:fontFamily="@font/waffle_regular"
         android:gravity="center|left"
         android:text="Add Your Time Story"
@@ -122,7 +122,8 @@
                 android:gravity="center"
                 android:text="Pick Time"
                 android:textColor="#f1f3ce"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:onClick="buttonTimePick"/>
 
             <TextView
                 android:id="@+id/textViewMessage"
