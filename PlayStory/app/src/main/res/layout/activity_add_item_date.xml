@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ddbc95"
+    tools:context="kmitl.playstory.pattasing.playstory.AddItemDate">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/label_bar_time"
+        android:layout_width="435dp"
+        android:layout_height="46dp"
+        android:background="#626D71"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/textAddTimeStory2"
+        android:layout_width="255dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/waffle_regular"
+        android:gravity="center|left"
+        android:text="Add Your Time Story"
+        android:textColor="#ddbc95"
+        android:textSize="40dp"
+        app:layout_constraintStart_toStartOf="@+id/label_bar_time"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/label_bar_low_time"
+        android:layout_width="492dp"
+        android:layout_height="40dp"
+        android:background="#626D71"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textSaveTime"
+        android:layout_width="181dp"
+        android:layout_height="40dp"
+        android:background="@drawable/border_image"
+        android:fontFamily="@font/waffle_regular"
+        android:gravity="center"
+        android:text="Save"
+        android:textColor="#f1f3ce"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/label_bar_low_time" />
+
+    <TextView
+        android:id="@+id/textCancelTime"
+        android:layout_width="182dp"
+        android:layout_height="40dp"
+        android:background="@drawable/border_image"
+        android:fontFamily="@font/waffle_regular"
+        android:gravity="center"
+        android:text="Cancel"
+        android:textColor="#f1f3ce"
+        android:textSize="30dp"
+        app:layout_constraintStart_toEndOf="@+id/textSaveTime"
+        app:layout_constraintTop_toTopOf="@+id/label_bar_low_time" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="328dp"
+        android:layout_height="466dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#dfb38867"
+        app:layout_constraintBottom_toTopOf="@+id/label_bar_low_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_bar_time">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/textViewTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/waffle_regular"
+                    android:text="Time : "
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/textTimePick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/waffle_regular"
+                    android:text="Time"
+                    android:textSize="30dp" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonTimePick"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_time"
+                android:fontFamily="@font/waffle_regular"
+                android:gravity="center"
+                android:text="Pick Time"
+                android:textColor="#f1f3ce"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/textViewMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/waffle_regular"
+                android:text="Message : "
+                android:textSize="30dp" />
+
+            <EditText
+                android:id="@+id/editTextMessage"
+                android:layout_width="fill_parent"
+                android:layout_height="108dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_time"
+                android:ems="10"
+                android:fontFamily="@font/waffle_regular"
+                android:gravity="left"
+                android:hint="  Message"
+                android:inputType="text|textMultiLine|textCapSentences"
+                android:maxLines="4"
+                android:scrollbars="vertical"
+                android:singleLine="false"
+                android:textColor="#ddbc95"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/textLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/waffle_regular"
+                    android:gravity="left"
+                    android:text="Location : "
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/textLocationPick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/waffle_regular"
+                    android:gravity="left"
+                    android:text="Location"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonMapPick"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_time"
+                android:fontFamily="@font/waffle_regular"
+                android:gravity="center"
+                android:text="Pick Location"
+                android:textColor="#f1f3ce"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/textViewIcon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/waffle_regular"
+                android:text="Icon : "
+                android:textSize="30dp" />
+
+            <ImageView
+                android:id="@+id/imageAddIconTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:background="@drawable/border_time"
+                app:srcCompat="@mipmap/add" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        debugHashKey();
-
         String currentDate = DateFormat.getDateInstance(DateFormat.LONG).format(new Date());
 
         textName = (TextView) findViewById(R.id.textName);
@@ -92,24 +90,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonAdd(View view){
-//        Intent intent = new Intent(this, AddStoryDate.class);
-//        startActivity(intent);
-    }
-
-    private void debugHashKey() {
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    "kmitl.playstory.pattasing.playstory",
-                    PackageManager.GET_SIGNATURES);
-            for (android.content.pm.Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-
-        } catch (NoSuchAlgorithmException e) {
-
-        }
+        Intent intent = new Intent(this, AddStoryDate.class);
+        startActivity(intent);
     }
 }

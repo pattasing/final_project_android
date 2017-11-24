@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DemoFinal2</string>
+    <string name="app_name">PlayStory</string>
     <string name="facebook_app_id">1198963660248142</string>
     <string name="fb_login_protocol_scheme">fb1198963660248142</string>
     <string name="login_play">Play</string>
