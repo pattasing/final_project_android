@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DDBC95"
+    tools:context="kmitl.playstory.pattasing.playstory.MainActivity">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagerBar"
+        android:layout_width="830dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/border_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/border_image"
+        app:layout_constraintStart_toStartOf="@+id/viewPagerBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textHi"
+        android:layout_width="56dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/waffle_regular"
+        android:gravity="center"
+        android:text="HI"
+        android:textColor="#DDBC95"
+        android:textSize="50dp"
+        app:layout_constraintStart_toEndOf="@+id/imageProfile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="209dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/waffle_regular"
+        android:gravity="left"
+        android:text="Name"
+        android:textColor="#DDBC95"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textHi"
+        app:layout_constraintStart_toEndOf="@+id/textHi"
+        app:layout_constraintTop_toTopOf="@+id/textHi" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listDate"
+        android:layout_width="344dp"
+        android:layout_height="409dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#dfb38867"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textMyStory" />
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="206dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="140dp"
+        android:fontFamily="@font/waffle_regular"
+        android:gravity="right"
+        android:text="21 November 2017"
+        android:textColor="#626d71"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+    <TextView
+        android:id="@+id/textMyStory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/waffle_regular"
+        android:text="My Story"
+        android:textColor="#626d71"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="45dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="5dp"
+        android:background="#5FB38867"
+        android:onClick="logout"
+        android:text="Logout"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
+
+    <ImageView
+        android:id="@+id/imageAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="276dp"
+        android:layout_marginTop="8dp"
+        android:onClick="buttonAdd"
+        app:layout_constraintStart_toStartOf="@+id/listDate"
+        app:layout_constraintTop_toBottomOf="@+id/textDate"
+        app:srcCompat="@mipmap/add" />
+
+
+</android.support.constraint.ConstraintLayout>

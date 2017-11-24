@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "851711540422",
+    "firebase_url": "https://playstory-ad4c1.firebaseio.com",
+    "project_id": "playstory-ad4c1",
+    "storage_bucket": "playstory-ad4c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851711540422:android:87f5a1d2155ef493",
+        "android_client_info": {
+          "package_name": "kmitl.playstory.pattasing.playstory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851711540422-13jqgggoktvdva5h4h77urrmmpe2kr87.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kmitl.playstory.pattasing.playstory",
+            "certificate_hash": "4c719b384f1c1f97e46552abc550e711ed003378"
+          }
+        },
+        {
+          "client_id": "851711540422-l03j5vv6r2qfofsujih5c88dqaosebbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs_C9F7DYozPfnlVAqAaZomDjMTsNxtu4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851711540422-l03j5vv6r2qfofsujih5c88dqaosebbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
