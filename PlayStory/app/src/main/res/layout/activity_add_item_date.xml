@@ -197,7 +197,8 @@
                 android:gravity="center"
                 android:text="Pick Location"
                 android:textColor="#f1f3ce"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:onClick="buttonPickMap"/>
 
             <TextView
                 android:id="@+id/textViewIcon"
