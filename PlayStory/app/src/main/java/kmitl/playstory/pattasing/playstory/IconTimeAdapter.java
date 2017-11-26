@@ -1,11 +1,14 @@
 package kmitl.playstory.pattasing.playstory;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -16,6 +19,8 @@ public class IconTimeAdapter extends RecyclerView.Adapter<Holder>{
 
     private List<String> iconList;
     private Context context;
+
+    int selectedPosition=-1;
 
     public IconTimeAdapter(Context context) {
         this.context = context;
@@ -35,10 +40,24 @@ public class IconTimeAdapter extends RecyclerView.Adapter<Holder>{
     }
 
     @Override
-    public void onBindViewHolder(Holder holder, int position) {
+    public void onBindViewHolder(Holder holder, final int position) {
         ImageView imageIcon = holder.imageIcon;
         String imageUrl = iconList.get(position);
         Glide.with(context).load(imageUrl).into(imageIcon);
+
+        if(selectedPosition==position)
+            holder.itemView.setBackgroundColor(Color.parseColor("#7fC0D7E1"));
+        else
+            holder.itemView.setBackgroundColor(Color.parseColor("#00ffffff"));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedPosition=position;
+                notifyDataSetChanged();
+                Toast.makeText(context,position+"",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

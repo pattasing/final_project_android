@@ -16,11 +16,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.text.format.DateFormat;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
@@ -42,6 +44,9 @@ public class AddItemDate extends AppCompatActivity {
     private TextView textAddTimeStory2;
     private TextView textSaveTime;
     private TextView textCancelTime;
+    private ImageView imageAddIconTime;
+
+    private String imageIconUrl;
 
     private IconTimeListFragment iconTimeListFragment;
     private FragmentManager fragmentManager;
@@ -69,6 +74,7 @@ public class AddItemDate extends AppCompatActivity {
         textAddTimeStory2 = (TextView) findViewById(R.id.textAddTimeStory2);
         textSaveTime = (TextView) findViewById(R.id.textSaveTime);
         textCancelTime = (TextView) findViewById(R.id.textCancelTime);
+        imageAddIconTime = (ImageView) findViewById(R.id.imageAddIconTime);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "waffle_regular.otf");
 
@@ -116,6 +122,10 @@ public class AddItemDate extends AppCompatActivity {
 
     public void addIconTime(View view) {
         iconTimeListFragment.show(fragmentManager, "Icon_Tag");
+    }
+
+    public void getIconTime(String imageIcon){
+        Glide.with(this).load(imageIcon).into(imageAddIconTime);
     }
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
