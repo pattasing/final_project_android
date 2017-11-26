@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
+
 public class IconTimeAdapter extends RecyclerView.Adapter<Holder>{
 
     private List<String> iconList;
@@ -55,7 +57,9 @@ public class IconTimeAdapter extends RecyclerView.Adapter<Holder>{
             public void onClick(View v) {
                 selectedPosition=position;
                 notifyDataSetChanged();
-                Toast.makeText(context,position+"",Toast.LENGTH_LONG).show();
+                SelectIconTime selectIconTime = SelectIconTime.getSelectIconTimeInstance();
+                selectIconTime.setUrlIcon(iconList.get(position));
+                Toast.makeText(context,"Icon Selected!",Toast.LENGTH_LONG).show();
             }
         });
     }

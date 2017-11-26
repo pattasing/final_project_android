@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
+
 public class IconTimeListFragment extends DialogFragment{
 
     private List<String> imageIcon = new ArrayList<>();
@@ -51,6 +53,9 @@ public class IconTimeListFragment extends DialogFragment{
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        SelectIconTime selectIconTime = SelectIconTime.getSelectIconTimeInstance();
+        String url = selectIconTime.getUrlIcon();
+        ((AddItemDate)getActivity()).getIconTime(url);
         imageIcon.clear();
     }
 }

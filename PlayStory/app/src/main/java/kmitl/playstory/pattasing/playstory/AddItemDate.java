@@ -30,6 +30,8 @@ import com.google.android.gms.location.places.ui.PlacePicker;
 
 import java.util.Calendar;
 
+import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
+
 public class AddItemDate extends AppCompatActivity {
 
     private TextView textTime;
@@ -45,8 +47,9 @@ public class AddItemDate extends AppCompatActivity {
     private TextView textSaveTime;
     private TextView textCancelTime;
     private ImageView imageAddIconTime;
+    private SelectIconTime selectIconTime;
 
-    private String imageIconUrl;
+    private int checkHaveIcon = 0;
 
     private IconTimeListFragment iconTimeListFragment;
     private FragmentManager fragmentManager;
@@ -93,6 +96,8 @@ public class AddItemDate extends AppCompatActivity {
 
         requestPermission();
 
+
+
     }
 
     private void requestPermission() {
@@ -121,11 +126,19 @@ public class AddItemDate extends AppCompatActivity {
     }
 
     public void addIconTime(View view) {
-        iconTimeListFragment.show(fragmentManager, "Icon_Tag");
+        if(checkHaveIcon == 0){
+            iconTimeListFragment.show(fragmentManager, "Icon_Tag");
+        }
+
     }
 
     public void getIconTime(String imageIcon){
-        Glide.with(this).load(imageIcon).into(imageAddIconTime);
+//        Glide.with(this).load(imageIcon).into(imageAddIconTime);
+        selectIconTime = SelectIconTime.getSelectIconTimeInstance();
+        if (selectIconTime.getUrlIcon() != null){
+            Glide.with(this).load(selectIconTime.getUrlIcon()).into(imageAddIconTime);
+            checkHaveIcon = 1;
+        }
     }
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
