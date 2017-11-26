@@ -3,6 +3,7 @@ package kmitl.playstory.pattasing.playstory;
 import android.*;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -42,6 +43,9 @@ public class AddItemDate extends AppCompatActivity {
     private TextView textSaveTime;
     private TextView textCancelTime;
 
+    private IconTimeListFragment iconTimeListFragment;
+    private FragmentManager fragmentManager;
+
     private final static int MY_PERMISSION_FINE_LOCATION = 101;
     private final static int PLACE_PICKER_REQUEST = 1;
 
@@ -49,6 +53,9 @@ public class AddItemDate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item_date);
+
+        fragmentManager = getFragmentManager();
+        iconTimeListFragment = new IconTimeListFragment();
 
         textTime = (TextView) findViewById(R.id.textViewTime);
         textPickTime = (TextView) findViewById(R.id.textTimePick);
@@ -105,6 +112,10 @@ public class AddItemDate extends AppCompatActivity {
         } catch (GooglePlayServicesNotAvailableException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addIconTime(View view) {
+        iconTimeListFragment.show(fragmentManager, "Icon_Tag");
     }
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {

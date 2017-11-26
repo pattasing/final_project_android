@@ -217,7 +217,8 @@
                 android:layout_marginLeft="100dp"
                 android:layout_marginRight="100dp"
                 android:background="@drawable/border_time"
-                app:srcCompat="@mipmap/add" />
+                app:srcCompat="@mipmap/add"
+                android:onClick="addIconTime"/>
 
 
         </LinearLayout>
