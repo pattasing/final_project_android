@@ -91,6 +91,8 @@ public class AddStoryDate extends AppCompatActivity {
             System.out.println("Message : " + itemTime.getMessage());
             System.out.println("Location : " + itemTime.getLocation());
             System.out.println("Icon : " + itemTime.getIconUrl());
+
+            //TEST GIT
         }
     }
 
