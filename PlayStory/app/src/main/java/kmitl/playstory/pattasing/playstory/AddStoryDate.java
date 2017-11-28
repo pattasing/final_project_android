@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -28,6 +30,9 @@ public class AddStoryDate extends AppCompatActivity {
     private TextView textSaveDate;
     private TextView textCancelDate;
     private int RESULT_ADD_TIME = 101;
+
+    ItemTimeAdapter itemTimeAdapter;
+    RecyclerView recyclerView;
 
     private ItemTimeList itemTimeList= new ItemTimeList();
 
@@ -56,6 +61,13 @@ public class AddStoryDate extends AppCompatActivity {
         textCancelDate.setTypeface(font);
 
         dateShow.setVisibility(View.GONE);
+
+        itemTimeAdapter = new ItemTimeAdapter(this);
+        recyclerView = (RecyclerView) findViewById(R.id.listTimeDiary);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        itemTimeAdapter.setItemTimeList(itemTimeList.getItemTimeList());
+        recyclerView.setAdapter(itemTimeAdapter);
+
 
     }
     public void datePick(View view){
@@ -87,12 +99,12 @@ public class AddStoryDate extends AppCompatActivity {
             itemTimeList.setItemTime(itemTime);
             System.out.println("Testsize : "+itemTimeList.getItemTimeList().size());
 
-            System.out.println("Time : " + itemTime.getTime());
-            System.out.println("Message : " + itemTime.getMessage());
-            System.out.println("Location : " + itemTime.getLocation());
-            System.out.println("Icon : " + itemTime.getIconUrl());
+//            System.out.println("Time : " + itemTimeList.getItemTimeList().get(0).getTime());
+//            System.out.println("Message : " + itemTime.getMessage());
+//            System.out.println("Location : " + itemTime.getLocation());
+//            System.out.println("Icon : " + itemTime.getIconUrl());
 
-            //TEST GIT
+            itemTimeAdapter.notifyDataSetChanged();
         }
     }
 
@@ -117,5 +129,6 @@ public class AddStoryDate extends AppCompatActivity {
     public void buttonAddIcon (View view){
 
     }
+
 
 }
