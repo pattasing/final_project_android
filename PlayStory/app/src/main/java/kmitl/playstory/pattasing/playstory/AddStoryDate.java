@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
+import kmitl.playstory.pattasing.playstory.model.ItemTime;
+import kmitl.playstory.pattasing.playstory.model.ItemTimeList;
+
 public class AddStoryDate extends AppCompatActivity {
 
     protected static TextView dateShow;
@@ -24,6 +27,9 @@ public class AddStoryDate extends AppCompatActivity {
     private TextView textStoryTime;
     private TextView textSaveDate;
     private TextView textCancelDate;
+    private int RESULT_ADD_TIME = 101;
+
+    private ItemTimeList itemTimeList= new ItemTimeList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,7 @@ public class AddStoryDate extends AppCompatActivity {
         textCancelDate.setTypeface(font);
 
         dateShow.setVisibility(View.GONE);
+
     }
     public void datePick(View view){
         DatePickerFragment datePickerFragment = new DatePickerFragment();
@@ -63,7 +70,28 @@ public class AddStoryDate extends AppCompatActivity {
 
     public void buttonAddTimeStory(View view) {
         Intent intent = new Intent(this, AddItemDate.class);
-        startActivity(intent);
+        intent.putExtra("testIntent", "Hello EIEI");
+        startActivityForResult(intent, RESULT_ADD_TIME);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RESULT_ADD_TIME && resultCode == RESULT_OK) {
+            ItemTime itemTime = new ItemTime();
+            itemTime.setTime(data.getStringExtra("itemTime"));
+            itemTime.setMessage(data.getStringExtra("itemMessage"));
+            itemTime.setLocation(data.getStringExtra("itemLocation"));
+            itemTime.setIconUrl(data.getStringExtra("itemIcon"));
+
+            itemTimeList.setItemTime(itemTime);
+            System.out.println("Testsize : "+itemTimeList.getItemTimeList().size());
+
+            System.out.println("Time : " + itemTime.getTime());
+            System.out.println("Message : " + itemTime.getMessage());
+            System.out.println("Location : " + itemTime.getLocation());
+            System.out.println("Icon : " + itemTime.getIconUrl());
+        }
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{

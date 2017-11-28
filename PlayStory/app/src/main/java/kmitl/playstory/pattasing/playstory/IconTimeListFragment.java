@@ -9,23 +9,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import kmitl.playstory.pattasing.playstory.model.IconTimeList;
+import kmitl.playstory.pattasing.playstory.model.ItemTime;
 import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
 
 public class IconTimeListFragment extends DialogFragment{
 
-    private List<String> imageIcon = new ArrayList<>();
+    private List<String> imageIcon;
+    private IconTimeList iconTimeList = new IconTimeList();
 
     RecyclerView recyclerView;
     IconTimeAdapter iconViewAdapter;
-
-    ImageView imageAddIconTime;
-
-
 
     @Nullable
     @Override
@@ -34,10 +32,7 @@ public class IconTimeListFragment extends DialogFragment{
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_list);
 
-        imageIcon.add("https://firebasestorage.googleapis.com/v0/b/playstory-ad4c1.appspot.com/o/IconTime%2FIconTime%2F1.png?alt=media&token=e0a463dd-44d2-474f-89b9-9342abf7c8bf");
-        imageIcon.add("https://firebasestorage.googleapis.com/v0/b/playstory-ad4c1.appspot.com/o/IconTime%2FIconTime%2F2.png?alt=media&token=b16abc79-2002-4720-b1d6-d6d4f55459ec");
-        imageIcon.add("https://firebasestorage.googleapis.com/v0/b/playstory-ad4c1.appspot.com/o/IconTime%2FIconTime%2F3.png?alt=media&token=ae1f7f5a-757e-4fc8-a72d-513b7cfed0a6");
-        imageIcon.add("https://firebasestorage.googleapis.com/v0/b/playstory-ad4c1.appspot.com/o/IconTime%2FIconTime%2F4.png?alt=media&token=e7cc3656-0a55-49e6-9be2-422532a9d4fd");
+        imageIcon = iconTimeList.getIconList();
 
         recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(), 3));
 
@@ -56,6 +51,5 @@ public class IconTimeListFragment extends DialogFragment{
         SelectIconTime selectIconTime = SelectIconTime.getSelectIconTimeInstance();
         String url = selectIconTime.getUrlIcon();
         ((AddItemDate)getActivity()).getIconTime(url);
-        imageIcon.clear();
     }
 }

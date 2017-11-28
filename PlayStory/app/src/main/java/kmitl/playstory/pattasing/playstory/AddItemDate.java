@@ -1,6 +1,5 @@
 package kmitl.playstory.pattasing.playstory;
 
-import android.*;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
@@ -27,9 +26,10 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
-
 import java.util.Calendar;
 
+import kmitl.playstory.pattasing.playstory.model.ItemTime;
+import kmitl.playstory.pattasing.playstory.model.ItemTimeList;
 import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
 
 public class AddItemDate extends AppCompatActivity {
@@ -49,6 +49,8 @@ public class AddItemDate extends AppCompatActivity {
     private ImageView imageAddIconTime;
     private SelectIconTime selectIconTime;
 
+    protected static ItemTime itemTime;
+
     private int checkHaveIcon = 0;
 
     private IconTimeListFragment iconTimeListFragment;
@@ -56,6 +58,8 @@ public class AddItemDate extends AppCompatActivity {
 
     private final static int MY_PERMISSION_FINE_LOCATION = 101;
     private final static int PLACE_PICKER_REQUEST = 1;
+
+    private String testIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,9 +98,13 @@ public class AddItemDate extends AppCompatActivity {
         textSaveTime.setTypeface(font);
         textCancelTime.setTypeface(font);
 
+        itemTime = new ItemTime();
+
         requestPermission();
 
-
+        Intent intent = getIntent();
+        testIntent = intent.getStringExtra("testIntent");
+        System.out.println("&&&&&&&&&&& : "+testIntent);
 
     }
 
@@ -133,12 +141,29 @@ public class AddItemDate extends AppCompatActivity {
     }
 
     public void getIconTime(String imageIcon){
-//        Glide.with(this).load(imageIcon).into(imageAddIconTime);
         selectIconTime = SelectIconTime.getSelectIconTimeInstance();
         if (selectIconTime.getUrlIcon() != null){
             Glide.with(this).load(selectIconTime.getUrlIcon()).into(imageAddIconTime);
+            itemTime.setIconUrl(selectIconTime.getUrlIcon());
             checkHaveIcon = 1;
         }
+    }
+
+    public void buttonSave(View view) {
+        itemTime.setMessage(editMessage.getText().toString());
+
+//        System.out.println("Time : " + itemTime.getTime());
+//        System.out.println("Message : " + itemTime.getMessage());
+//        System.out.println("Location : " + itemTime.getLocation());
+//        System.out.println("Icon : " + itemTime.getIconUrl());
+
+        Intent intent = new Intent(this, AddStoryDate.class);
+        intent.putExtra("itemTime", itemTime.getTime());
+        intent.putExtra("itemMessage", itemTime.getMessage());
+        intent.putExtra("itemLocation", itemTime.getLocation());
+        intent.putExtra("itemIcon", itemTime.getIconUrl());
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
@@ -154,16 +179,23 @@ public class AddItemDate extends AppCompatActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             String hourS = String.valueOf(hourOfDay);
             String minuteS = String.valueOf(minute);
+            String time;
 
             if (hourS.length() == 1 && minuteS.length() == 1) {
-                textPickTime.setText("0" + String.valueOf(hourOfDay) + " : " + "0" + String.valueOf(minute));
+                time = "0" + String.valueOf(hourOfDay) + " : " + "0" + String.valueOf(minute);
+                textPickTime.setText(time);
             } else if (hourS.length() > 1 && minuteS.length() == 1) {
-                textPickTime.setText(String.valueOf(hourOfDay) + " : " + " 0" + String.valueOf(minute));
+                time = String.valueOf(hourOfDay) + " : " + " 0" + String.valueOf(minute);
+                textPickTime.setText(time);
             } else if (hourS.length() == 1 && minuteS.length() > 1) {
-                textPickTime.setText("0" + String.valueOf(hourOfDay) + " : " + String.valueOf(minute));
+                time = "0" + String.valueOf(hourOfDay) + " : " + String.valueOf(minute);
+                textPickTime.setText(time);
             } else {
-                textPickTime.setText(String.valueOf(hourOfDay) + " : " + String.valueOf(minute));
+                time = String.valueOf(hourOfDay) + " : " + String.valueOf(minute);
+                textPickTime.setText(time);
             }
+
+            itemTime.setTime(time);
         }
     }
 
@@ -188,10 +220,9 @@ public class AddItemDate extends AppCompatActivity {
             if (resultCode == RESULT_OK){
                 Place place = PlacePicker.getPlace(AddItemDate.this, data);
                 textPickLocation.setText(place.getName());
-//                placeAddressText.setText(place.getAddress());
+                itemTime.setLocation(String.valueOf(place.getName()));
             }
         }
     }
-
 
 }

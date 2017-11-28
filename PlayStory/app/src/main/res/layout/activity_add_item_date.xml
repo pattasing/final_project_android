@@ -47,7 +47,8 @@
         android:textColor="#f1f3ce"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/label_bar_low_time" />
+        app:layout_constraintTop_toTopOf="@+id/label_bar_low_time"
+        android:onClick="buttonSave"/>
 
     <TextView
         android:id="@+id/textCancelTime"
