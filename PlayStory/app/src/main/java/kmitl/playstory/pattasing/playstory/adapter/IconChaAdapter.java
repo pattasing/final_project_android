@@ -1,4 +1,4 @@
-package kmitl.playstory.pattasing.playstory;
+package kmitl.playstory.pattasing.playstory.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -14,9 +14,10 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import kmitl.playstory.pattasing.playstory.R;
 import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
 
-class IconChaAdapter extends RecyclerView.Adapter<ChaHolder>{
+public class IconChaAdapter extends RecyclerView.Adapter<ChaHolder>{
 
     private List<String> iconList;
     private Context context;

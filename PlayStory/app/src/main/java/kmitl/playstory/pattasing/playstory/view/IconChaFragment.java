@@ -1,4 +1,4 @@
-package kmitl.playstory.pattasing.playstory;
+package kmitl.playstory.pattasing.playstory.view;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import kmitl.playstory.pattasing.playstory.AddStoryDate;
+import kmitl.playstory.pattasing.playstory.R;
+import kmitl.playstory.pattasing.playstory.adapter.IconChaAdapter;
 import kmitl.playstory.pattasing.playstory.model.IconChaList;
 import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
 
