@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageProfile;
     private ImageView imageAdd;
     private Button buttonLogout;
-    private String userEmail;
+    public static String userEmail;
     private List<MyDiaryTable> myDiaryTableListGlobal;
 
     ItemDayAdapter itemDayAdapter;

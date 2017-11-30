@@ -1,6 +1,7 @@
 package kmitl.playstory.pattasing.playstory.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import kmitl.playstory.pattasing.playstory.R;
 import kmitl.playstory.pattasing.playstory.controller.MyDiaryTable;
+import kmitl.playstory.pattasing.playstory.controller.PlayActivity;
 
 public class ItemDayAdapter extends RecyclerView.Adapter<HolderDay>{
     private List<MyDiaryTable> itemDayList;
@@ -41,10 +43,19 @@ public class ItemDayAdapter extends RecyclerView.Adapter<HolderDay>{
         String imageUrl = itemDayList.get(position).getCharacter();
 
         TextView textViewDay = holder.textDate;
-        String textDay = itemDayList.get(position).getDate();
+        final String textDay = itemDayList.get(position).getDate();
 
         Glide.with(context).load(imageUrl).into(image);
         textViewDay.setText(textDay);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PlayActivity.class);
+                intent.putExtra("datePlay", textDay);
+                context.startActivities(new Intent[]{intent});
+            }
+        });
     }
 
     @Override
@@ -62,5 +73,6 @@ class HolderDay extends RecyclerView.ViewHolder{
         super(itemView);
         image = (ImageView) itemView.findViewById(R.id.imageViewInListDay);
         textDate = (TextView) itemView.findViewById(R.id.textViewInListDay);
+
     }
 }

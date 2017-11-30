@@ -179,6 +179,10 @@ public class AddStoryDate extends AppCompatActivity {
 
     }
 
+    public void buttonCancelDate(View view) {
+        finish();
+    }
+
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -206,9 +210,5 @@ public class AddStoryDate extends AppCompatActivity {
         if(checkHaveIcon == 0){
             iconChaFragment.show(fragmentManager, "Icon_Tag");
         }
-    }
-
-    public void insertTime(){
-
     }
 }
