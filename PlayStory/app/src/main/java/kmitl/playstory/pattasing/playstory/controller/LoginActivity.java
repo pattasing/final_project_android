@@ -1,4 +1,4 @@
-package kmitl.playstory.pattasing.playstory;
+package kmitl.playstory.pattasing.playstory.controller;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -25,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
+
+import kmitl.playstory.pattasing.playstory.R;
 
 public class LoginActivity extends AppCompatActivity {
 

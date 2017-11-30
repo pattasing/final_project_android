@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ddbc95"
-    tools:context="kmitl.playstory.pattasing.playstory.AddItemDate">
+    tools:context="kmitl.playstory.pattasing.playstory.controller.AddItemDate">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/label_bar_time"
@@ -60,6 +60,7 @@
         android:text="Cancel"
         android:textColor="#f1f3ce"
         android:textSize="30dp"
+        android:onClick="buttonCancel"
         app:layout_constraintStart_toEndOf="@+id/textSaveTime"
         app:layout_constraintTop_toTopOf="@+id/label_bar_low_time" />
 

@@ -1,4 +1,4 @@
-package kmitl.playstory.pattasing.playstory;
+package kmitl.playstory.pattasing.playstory.controller;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -28,6 +28,7 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import java.util.Calendar;
 
+import kmitl.playstory.pattasing.playstory.R;
 import kmitl.playstory.pattasing.playstory.model.ItemTime;
 import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
 import kmitl.playstory.pattasing.playstory.view.IconTimeListFragment;
@@ -152,6 +153,10 @@ public class AddItemDate extends AppCompatActivity {
         intent.putExtra("itemLocation", itemTime.getLocation());
         intent.putExtra("itemIcon", itemTime.getIconUrl());
         setResult(RESULT_OK, intent);
+        finish();
+    }
+
+    public void buttonCancel(View view) {
         finish();
     }
 

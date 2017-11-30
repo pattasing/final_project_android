@@ -1,14 +1,14 @@
-package kmitl.playstory.pattasing.playstory;
+package kmitl.playstory.pattasing.playstory.controller;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,10 +19,12 @@ import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
+
+import kmitl.playstory.pattasing.playstory.R;
+import kmitl.playstory.pattasing.playstory.adapter.ItemDayAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageProfile;
     private ImageView imageAdd;
     private Button buttonLogout;
+    private String userEmail;
+    private List<MyDiaryTable> myDiaryTableListGlobal;
+
+    ItemDayAdapter itemDayAdapter;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +76,14 @@ public class MainActivity extends AppCompatActivity {
             String uid = user.getUid();
 
             textName.setText(name);
+            userEmail = email;
             Glide.with(this).load(photoUrl).into(imageProfile);
 
         } else{
             goLoginScreen();
         }
+
+        queryDateAndCha();
 
     }
 
@@ -91,6 +101,35 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonAdd(View view){
         Intent intent = new Intent(this, AddStoryDate.class);
+        intent.putExtra("userEmail", userEmail);
         startActivity(intent);
+    }
+
+    public void queryDateAndCha(){
+        final MyDiaryDB myDiaryDB = Room.databaseBuilder(this,
+                MyDiaryDB.class, "MYDIARY")
+                .build();
+
+        new AsyncTask<Void, Void, List<MyDiaryTable>>() {
+            @Override
+            protected List<MyDiaryTable> doInBackground(Void... voids) {
+                List<MyDiaryTable> myDiaryTableList = myDiaryDB.getMyDiaryDAO().getDateAndCha(userEmail);
+                myDiaryTableListGlobal = myDiaryTableList;
+                System.out.println("doinbackground :"+ myDiaryTableListGlobal.size());
+                return myDiaryTableList;
+            }
+
+            @Override
+            protected void onPostExecute(List<MyDiaryTable> myDiaryTables) {
+                myDiaryTableListGlobal = myDiaryTables;
+                itemDayAdapter = new ItemDayAdapter(MainActivity.this);
+                recyclerView = (RecyclerView) findViewById(R.id.listDate);
+                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                itemDayAdapter.setItemDayList(myDiaryTableListGlobal);
+                recyclerView.setAdapter(itemDayAdapter);
+                System.out.println("aaaaaaaaaaa :"+ userEmail);
+                System.out.println("aaaaaaaaaaa :"+ myDiaryTableListGlobal.size());
+            }
+        }.execute();
     }
 }

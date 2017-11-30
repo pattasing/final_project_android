@@ -1,11 +1,13 @@
-package kmitl.playstory.pattasing.playstory;
+package kmitl.playstory.pattasing.playstory.controller;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,9 +22,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.Calendar;
 
+import kmitl.playstory.pattasing.playstory.R;
 import kmitl.playstory.pattasing.playstory.adapter.ItemTimeAdapter;
 import kmitl.playstory.pattasing.playstory.model.ItemTime;
 import kmitl.playstory.pattasing.playstory.model.ItemTimeList;
+import kmitl.playstory.pattasing.playstory.model.MyDiary;
 import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
 import kmitl.playstory.pattasing.playstory.view.IconChaFragment;
 
@@ -39,6 +43,9 @@ public class AddStoryDate extends AppCompatActivity {
     private int RESULT_ADD_TIME = 101;
     private SelectIconTime selectIconTime;
     private ImageView imageInAddIcon;
+    private String userEmail;
+
+    protected static String dateDiary;
 
     ItemTimeAdapter itemTimeAdapter;
     RecyclerView recyclerView;
@@ -86,6 +93,8 @@ public class AddStoryDate extends AppCompatActivity {
         itemTimeAdapter.setItemTimeList(itemTimeList.getItemTimeList());
         recyclerView.setAdapter(itemTimeAdapter);
 
+        Intent intent = getIntent();
+        userEmail = intent.getStringExtra("userEmail");
 
     }
     public void datePick(View view){
@@ -128,6 +137,48 @@ public class AddStoryDate extends AppCompatActivity {
         }
     }
 
+    public void buttonAddDiary(View view) {
+        final MyDiary myDiary = new MyDiary();
+        myDiary.setDate(dateDiary);
+        myDiary.setCharacter(selectIconTime.getUrlIconCha());
+        myDiary.setItemTimes(itemTimeList.getItemTimeList());
+
+        System.out.println("888888888 : " + myDiary.getDate());
+
+        for (int i = 0; i < myDiary.getItemTimes().size(); i++){
+            final MyDiaryDB myDiaryDB = Room.databaseBuilder(this,
+                    MyDiaryDB.class, "MYDIARY")
+                    .build();
+
+            final int finalI = i;
+            new AsyncTask<Void, Void, MyDiaryTable>(){
+
+                @Override
+                protected MyDiaryTable doInBackground(Void... voids) {
+
+//                for(int i = 0; i < myDiary.getItemTimes().size(); i++){
+                    MyDiaryTable myDiaryTable = new MyDiaryTable();
+                    myDiaryTable.setEmail(userEmail);
+                    myDiaryTable.setDate(myDiary.getDate());
+                    myDiaryTable.setCharacter(myDiary.getCharacter());
+                    myDiaryTable.setTime(myDiary.getItemTimes().get(finalI).getTime());
+                    myDiaryTable.setMessage(myDiary.getItemTimes().get(finalI).getMessage());
+                    myDiaryTable.setLocation(myDiary.getItemTimes().get(finalI).getLocation());
+                    myDiaryTable.setIcon(myDiary.getItemTimes().get(finalI).getIconUrl());
+                    System.out.println(myDiaryTable.getId()+myDiaryTable.getCharacter());
+                    myDiaryDB.getMyDiaryDAO().insert(myDiaryTable);
+//                }
+
+                    return null;
+                }
+            }.execute();
+        }
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
+    }
+
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -140,7 +191,12 @@ public class AddStoryDate extends AppCompatActivity {
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             String listMonth[] = {"January", "February", "March", "April", "May", "June", "July"
                     , "August", "September", "October", "November", "December"};
-            dateShow.setText(String.valueOf(dayOfMonth) + " " + listMonth[month] + " " + String.valueOf(year));
+
+            String date = String.valueOf(dayOfMonth) + " " + listMonth[month] + " " + String.valueOf(year);
+            dateShow.setText(date);
+
+            dateDiary = date;
+
             dateShow.setVisibility(View.VISIBLE);
             buttonDate.setVisibility(View.GONE);
         }
@@ -152,5 +208,7 @@ public class AddStoryDate extends AppCompatActivity {
         }
     }
 
+    public void insertTime(){
 
+    }
 }

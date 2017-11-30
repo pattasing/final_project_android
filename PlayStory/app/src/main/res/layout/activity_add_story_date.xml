@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ddbc95"
-    tools:context="kmitl.playstory.pattasing.playstory.AddStoryDate">
+    tools:context="kmitl.playstory.pattasing.playstory.controller.AddStoryDate">
 
     <TextView
         android:id="@+id/textDateSelect"
@@ -165,6 +165,7 @@
         android:text="Save"
         android:textColor="#f1f3ce"
         android:textSize="30dp"
+        android:onClick="buttonAddDiary"
         app:layout_constraintStart_toStartOf="@+id/label_bar_low"
         app:layout_constraintTop_toTopOf="@+id/label_bar_low" />
 

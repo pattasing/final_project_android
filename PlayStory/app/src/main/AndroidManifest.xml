@@ -3,7 +3,6 @@
     package="kmitl.playstory.pattasing.playstory">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -16,12 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyClHdMJOa8BOGD1FWpEt1WWDLHemrJSQTo"/>
+            android:value="AIzaSyClHdMJOa8BOGD1FWpEt1WWDLHemrJSQTo" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,9 +31,10 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".AddStoryDate" />
-        <activity android:name=".AddItemDate"></activity>
+        <activity android:name=".controller.LoginActivity" />
+        <activity android:name=".controller.AddStoryDate" />
+        <activity android:name=".controller.AddItemDate" />
+        <activity android:name=".controller.PlayActivity"></activity>
     </application>
 
 </manifest>

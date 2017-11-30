@@ -34,9 +34,6 @@ public class ItemTimeAdapter extends RecyclerView.Adapter<HolderItem>{
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View itemView = layoutInflater.inflate(R.layout.item_time, null, false);
         HolderItem holderItem = new HolderItem(itemView);
-
-
-
         return holderItem;
     }
 
@@ -44,7 +41,6 @@ public class ItemTimeAdapter extends RecyclerView.Adapter<HolderItem>{
     public void onBindViewHolder(HolderItem holder, int position) {
         ImageView image = holder.image;
         String imageUrl = itemTimeList.get(position).getIconUrl();
-        System.out.println(imageUrl);
 
         TextView textViewTime = holder.textViewTime;
         String textTime = itemTimeList.get(position).getTime();

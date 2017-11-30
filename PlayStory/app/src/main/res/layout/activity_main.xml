@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DDBC95"
-    tools:context="kmitl.playstory.pattasing.playstory.MainActivity">
+    tools:context="kmitl.playstory.pattasing.playstory.controller.MainActivity">
 
 
     <android.support.v4.view.ViewPager
