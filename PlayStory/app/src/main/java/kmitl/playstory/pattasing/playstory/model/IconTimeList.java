@@ -62,8 +62,4 @@ public class IconTimeList {
     public List<String> getIconList() {
         return iconList;
     }
-
-    public void setIconList(List<String> iconList) {
-        this.iconList = iconList;
-    }
 }

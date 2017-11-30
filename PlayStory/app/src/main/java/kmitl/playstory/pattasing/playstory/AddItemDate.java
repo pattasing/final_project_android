@@ -29,7 +29,6 @@ import com.google.android.gms.location.places.ui.PlacePicker;
 import java.util.Calendar;
 
 import kmitl.playstory.pattasing.playstory.model.ItemTime;
-import kmitl.playstory.pattasing.playstory.model.ItemTimeList;
 import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
 
 public class AddItemDate extends AppCompatActivity {
@@ -58,8 +57,6 @@ public class AddItemDate extends AppCompatActivity {
 
     private final static int MY_PERMISSION_FINE_LOCATION = 101;
     private final static int PLACE_PICKER_REQUEST = 1;
-
-    private String testIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,10 +98,6 @@ public class AddItemDate extends AppCompatActivity {
         itemTime = new ItemTime();
 
         requestPermission();
-
-        Intent intent = getIntent();
-        testIntent = intent.getStringExtra("testIntent");
-        System.out.println("&&&&&&&&&&& : "+testIntent);
 
     }
 
@@ -151,11 +144,6 @@ public class AddItemDate extends AppCompatActivity {
 
     public void buttonSave(View view) {
         itemTime.setMessage(editMessage.getText().toString());
-
-//        System.out.println("Time : " + itemTime.getTime());
-//        System.out.println("Message : " + itemTime.getMessage());
-//        System.out.println("Location : " + itemTime.getLocation());
-//        System.out.println("Icon : " + itemTime.getIconUrl());
 
         Intent intent = new Intent(this, AddStoryDate.class);
         intent.putExtra("itemTime", itemTime.getTime());

@@ -11,16 +11,16 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import kmitl.playstory.pattasing.playstory.model.IconTimeList;
+import kmitl.playstory.pattasing.playstory.model.IconChaList;
 import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
 
-public class IconTimeListFragment extends DialogFragment{
+public class IconChaFragment extends DialogFragment{
 
     private List<String> imageIcon;
-    private IconTimeList iconTimeList = new IconTimeList();
+    private IconChaList iconChaList = new IconChaList();
 
     RecyclerView recyclerView;
-    IconTimeAdapter iconViewAdapter;
+    IconChaAdapter iconChaAdapter;
 
     @Nullable
     @Override
@@ -29,16 +29,14 @@ public class IconTimeListFragment extends DialogFragment{
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_list);
 
-        imageIcon = iconTimeList.getIconList();
+        imageIcon = iconChaList.getIconChaList();
 
         recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(), 3));
 
-        iconViewAdapter = new IconTimeAdapter(this.getActivity());
-        iconViewAdapter.setIconList(imageIcon);
-        recyclerView.setAdapter(iconViewAdapter);
-
-        this.getDialog().setTitle("Select Icon");
-
+        iconChaAdapter = new IconChaAdapter(this.getActivity());
+        iconChaAdapter.setIconList(imageIcon);
+        recyclerView.setAdapter(iconChaAdapter);
+        this.getDialog().setTitle("Select Character");
         return rootView;
     }
 
@@ -47,6 +45,6 @@ public class IconTimeListFragment extends DialogFragment{
         super.onDestroyView();
         SelectIconTime selectIconTime = SelectIconTime.getSelectIconTimeInstance();
         String url = selectIconTime.getUrlIcon();
-        ((AddItemDate)getActivity()).getIconTime(url);
+        ((AddStoryDate)getActivity()).getIconCha(url);
     }
 }

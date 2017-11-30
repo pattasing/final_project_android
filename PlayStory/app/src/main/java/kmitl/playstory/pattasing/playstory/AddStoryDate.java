@@ -3,6 +3,7 @@ package kmitl.playstory.pattasing.playstory;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -12,12 +13,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.Calendar;
 
 import kmitl.playstory.pattasing.playstory.model.ItemTime;
 import kmitl.playstory.pattasing.playstory.model.ItemTimeList;
+import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
 
 public class AddStoryDate extends AppCompatActivity {
 
@@ -30,9 +35,16 @@ public class AddStoryDate extends AppCompatActivity {
     private TextView textSaveDate;
     private TextView textCancelDate;
     private int RESULT_ADD_TIME = 101;
+    private SelectIconTime selectIconTime;
+    private ImageView imageInAddIcon;
 
     ItemTimeAdapter itemTimeAdapter;
     RecyclerView recyclerView;
+
+    private int checkHaveIcon = 0;
+
+    private IconChaFragment iconChaFragment;
+    private FragmentManager fragmentManager;
 
     private ItemTimeList itemTimeList= new ItemTimeList();
 
@@ -40,6 +52,9 @@ public class AddStoryDate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_story_date);
+
+        fragmentManager = getFragmentManager();
+        iconChaFragment = new IconChaFragment();
 
         dateShow = (TextView) findViewById(R.id.textDateShow);
         buttonDate = (Button) findViewById(R.id.buttonDatePick);
@@ -49,6 +64,7 @@ public class AddStoryDate extends AppCompatActivity {
         textStoryTime = (TextView) findViewById(R.id.textStoryTime);
         textSaveDate = (TextView) findViewById(R.id.textSaveDate);
         textCancelDate = (TextView) findViewById(R.id.textCancelDate);
+        imageInAddIcon = (ImageView) findViewById(R.id.imageInAddIcon);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "waffle_regular.otf");
         dateShow.setTypeface(font);
@@ -98,13 +114,15 @@ public class AddStoryDate extends AppCompatActivity {
 
             itemTimeList.setItemTime(itemTime);
             System.out.println("Testsize : "+itemTimeList.getItemTimeList().size());
-
-//            System.out.println("Time : " + itemTimeList.getItemTimeList().get(0).getTime());
-//            System.out.println("Message : " + itemTime.getMessage());
-//            System.out.println("Location : " + itemTime.getLocation());
-//            System.out.println("Icon : " + itemTime.getIconUrl());
-
             itemTimeAdapter.notifyDataSetChanged();
+        }
+    }
+
+    public void getIconCha(String url) {
+        selectIconTime = SelectIconTime.getSelectIconTimeInstance();
+        if(selectIconTime.getUrlIconCha() != null){
+            Glide.with(this).load(selectIconTime.getUrlIconCha()).into(imageInAddIcon);
+            checkHaveIcon = 1;
         }
     }
 
@@ -127,7 +145,9 @@ public class AddStoryDate extends AppCompatActivity {
     }
 
     public void buttonAddIcon (View view){
-
+        if(checkHaveIcon == 0){
+            iconChaFragment.show(fragmentManager, "Icon_Tag");
+        }
     }
 
 
