@@ -146,14 +146,24 @@ public class AddItemDate extends AppCompatActivity {
 
     public void buttonSave(View view) {
         itemTime.setMessage(editMessage.getText().toString());
+        System.out.println(itemTime.getTime());
+        System.out.println(itemTime.getLocation());
+        System.out.println(itemTime.getMessage());
+        System.out.println(itemTime.getIconUrl());
 
-        Intent intent = new Intent(this, AddStoryDate.class);
-        intent.putExtra("itemTime", itemTime.getTime());
-        intent.putExtra("itemMessage", itemTime.getMessage());
-        intent.putExtra("itemLocation", itemTime.getLocation());
-        intent.putExtra("itemIcon", itemTime.getIconUrl());
-        setResult(RESULT_OK, intent);
-        finish();
+        if(itemTime.getTime() == null || itemTime.getLocation() == null ||
+                itemTime.getMessage() == null || itemTime.getIconUrl() == null){
+            Toast.makeText(this, "Null", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Intent intent = new Intent(this, AddStoryDate.class);
+            intent.putExtra("itemTime", itemTime.getTime());
+            intent.putExtra("itemMessage", itemTime.getMessage());
+            intent.putExtra("itemLocation", itemTime.getLocation());
+            intent.putExtra("itemIcon", itemTime.getIconUrl());
+            setResult(RESULT_OK, intent);
+            finish();
+        }
     }
 
     public void buttonCancel(View view) {

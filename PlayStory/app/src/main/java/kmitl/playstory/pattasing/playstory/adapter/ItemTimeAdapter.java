@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kmitl.playstory.pattasing.playstory.R;
+import kmitl.playstory.pattasing.playstory.controller.MainActivity;
 import kmitl.playstory.pattasing.playstory.model.ItemTime;
 
 public class ItemTimeAdapter extends RecyclerView.Adapter<HolderItem>{
@@ -23,6 +24,7 @@ public class ItemTimeAdapter extends RecyclerView.Adapter<HolderItem>{
     public ItemTimeAdapter(Context context) {
         this.context = context;
         itemTimeList = new ArrayList<>();
+
     }
 
     public void setItemTimeList(List<ItemTime> itemTimeList){
@@ -72,5 +74,8 @@ class HolderItem extends RecyclerView.ViewHolder{
         image = (ImageView) itemView.findViewById(R.id.imageViewIconInList);
         textViewTime = (TextView) itemView.findViewById(R.id.textViewTimeInList);
         textViewMessage = (TextView) itemView.findViewById(R.id.textViewMessageInList);
+
+        textViewTime.setTypeface(MainActivity.font);
+        textViewMessage.setTypeface(MainActivity.font);
     }
 }

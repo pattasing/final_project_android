@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -139,43 +140,56 @@ public class AddStoryDate extends AppCompatActivity {
 
     public void buttonAddDiary(View view) {
         final MyDiary myDiary = new MyDiary();
-        myDiary.setDate(dateDiary);
-        myDiary.setCharacter(selectIconTime.getUrlIconCha());
-        myDiary.setItemTimes(itemTimeList.getItemTimeList());
 
-        System.out.println("888888888 : " + myDiary.getDate());
 
-        for (int i = 0; i < myDiary.getItemTimes().size(); i++){
-            final MyDiaryDB myDiaryDB = Room.databaseBuilder(this,
-                    MyDiaryDB.class, "MYDIARY")
-                    .build();
+        System.out.println(myDiary.getDate());
+        System.out.println(myDiary.getCharacter());
+        System.out.println(myDiary.getCharacter());
 
-            final int finalI = i;
-            new AsyncTask<Void, Void, MyDiaryTable>(){
+        if(dateDiary == null || selectIconTime.getUrlIconCha() == null || itemTimeList.getItemTimeList() == null){
+            Toast.makeText(this, "null", Toast.LENGTH_LONG).show();
+        }
+        else{
+            myDiary.setDate(dateDiary);
+            myDiary.setCharacter(selectIconTime.getUrlIconCha());
+            myDiary.setItemTimes(itemTimeList.getItemTimeList());
 
-                @Override
-                protected MyDiaryTable doInBackground(Void... voids) {
+            System.out.println("888888888 : " + myDiary.getDate());
+
+            for (int i = 0; i < myDiary.getItemTimes().size(); i++){
+                final MyDiaryDB myDiaryDB = Room.databaseBuilder(this,
+                        MyDiaryDB.class, "MYDIARY")
+                        .build();
+
+                final int finalI = i;
+                new AsyncTask<Void, Void, MyDiaryTable>(){
+
+                    @Override
+                    protected MyDiaryTable doInBackground(Void... voids) {
 
 //                for(int i = 0; i < myDiary.getItemTimes().size(); i++){
-                    MyDiaryTable myDiaryTable = new MyDiaryTable();
-                    myDiaryTable.setEmail(userEmail);
-                    myDiaryTable.setDate(myDiary.getDate());
-                    myDiaryTable.setCharacter(myDiary.getCharacter());
-                    myDiaryTable.setTime(myDiary.getItemTimes().get(finalI).getTime());
-                    myDiaryTable.setMessage(myDiary.getItemTimes().get(finalI).getMessage());
-                    myDiaryTable.setLocation(myDiary.getItemTimes().get(finalI).getLocation());
-                    myDiaryTable.setIcon(myDiary.getItemTimes().get(finalI).getIconUrl());
-                    System.out.println(myDiaryTable.getId()+myDiaryTable.getCharacter());
-                    myDiaryDB.getMyDiaryDAO().insert(myDiaryTable);
+                        MyDiaryTable myDiaryTable = new MyDiaryTable();
+                        myDiaryTable.setEmail(userEmail);
+                        myDiaryTable.setDate(myDiary.getDate());
+                        myDiaryTable.setCharacter(myDiary.getCharacter());
+                        myDiaryTable.setTime(myDiary.getItemTimes().get(finalI).getTime());
+                        myDiaryTable.setMessage(myDiary.getItemTimes().get(finalI).getMessage());
+                        myDiaryTable.setLocation(myDiary.getItemTimes().get(finalI).getLocation());
+                        myDiaryTable.setIcon(myDiary.getItemTimes().get(finalI).getIconUrl());
+                        System.out.println(myDiaryTable.getId()+myDiaryTable.getCharacter());
+                        myDiaryDB.getMyDiaryDAO().insert(myDiaryTable);
 //                }
 
-                    return null;
-                }
-            }.execute();
+                        return null;
+                    }
+                }.execute();
+            }
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
 
     }
 

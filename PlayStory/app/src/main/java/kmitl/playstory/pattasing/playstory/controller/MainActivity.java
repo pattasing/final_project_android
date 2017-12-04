@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     public static String userEmail;
     private List<MyDiaryTable> myDiaryTableListGlobal;
 
+    public static Typeface font;
+
     ItemDayAdapter itemDayAdapter;
     RecyclerView recyclerView;
 

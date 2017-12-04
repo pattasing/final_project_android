@@ -15,6 +15,7 @@ import java.util.List;
 
 import kmitl.playstory.pattasing.playstory.R;
 import kmitl.playstory.pattasing.playstory.controller.AnimationActivity;
+import kmitl.playstory.pattasing.playstory.controller.MainActivity;
 import kmitl.playstory.pattasing.playstory.controller.MyDiaryTable;
 import kmitl.playstory.pattasing.playstory.controller.PlayActivity;
 
@@ -74,6 +75,8 @@ class HolderDay extends RecyclerView.ViewHolder{
         super(itemView);
         image = (ImageView) itemView.findViewById(R.id.imageViewInListDay);
         textDate = (TextView) itemView.findViewById(R.id.textViewInListDay);
+
+        textDate.setTypeface(MainActivity.font);
 
     }
 }

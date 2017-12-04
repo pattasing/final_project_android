@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import java.util.List;
 import kmitl.playstory.pattasing.playstory.R;
 import kmitl.playstory.pattasing.playstory.adapter.CustomListItemAdapter;
 import kmitl.playstory.pattasing.playstory.adapter.IconTimeAnimationAdapter;
+import kmitl.playstory.pattasing.playstory.model.IconChaList;
 import kmitl.playstory.pattasing.playstory.model.SelectTimeToShow;
 
 public class AnimationActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -42,10 +44,7 @@ public class AnimationActivity extends AppCompatActivity implements AdapterView.
     private ListView list;
     private float tempPosY = 0.0f;
 
-    SelectTimeToShow selectTimeToShow;
-
-    RecyclerView recyclerView;
-    IconTimeAnimationAdapter iconTimeAnimationAdapter;
+    private IconChaList iconChaList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,20 +67,19 @@ public class AnimationActivity extends AppCompatActivity implements AdapterView.
         textLocation = (TextView) findViewById(R.id.textViewLocationAnima);
         textMesasse = (TextView) findViewById(R.id.textViewMessageAnima);
 
+        textMesasse.setTypeface(font);
+        textLocation.setTypeface(font);
+        textTime.setTypeface(font);
+
         queryTimeIndate();
 
         imageAnimation = (ImageView) findViewById(R.id.imageAnimation);
-
-        imageAnimation.post(new Runnable() {
-            @Override
-            public void run() {
-                ((AnimationDrawable) imageAnimation.getBackground()).start();
-            }
-        });
+//        imageAnimation.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.ainmation_scottish));
 
         list = (ListView) findViewById(R.id.listItemIconTime);
         list.setOnItemClickListener(this);
 
+        iconChaList = new IconChaList();
     }
 
     private void queryTimeIndate() {
@@ -105,6 +103,20 @@ public class AnimationActivity extends AppCompatActivity implements AdapterView.
                         R.layout.icon_animation_page, myDiaryTables);
 
                 list.setAdapter(adapter);
+
+                imageAnimation.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((AnimationDrawable) imageAnimation.getBackground()).start();
+                    }
+                });
+
+                if(myDiaryTableListGlobal.get(0).getCharacter().equals(iconChaList.getIconChaList().get(0))){
+                    imageAnimation.setBackgroundDrawable(ContextCompat.getDrawable(AnimationActivity.this, R.drawable.ainmation_scottish));
+                }
+                else{
+                    imageAnimation.setBackgroundDrawable(ContextCompat.getDrawable(AnimationActivity.this, R.drawable.animation_scottish_man));
+                }
 
              }
         }.execute();

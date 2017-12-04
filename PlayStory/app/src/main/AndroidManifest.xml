@@ -19,7 +19,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyClHdMJOa8BOGD1FWpEt1WWDLHemrJSQTo" />
 
-        <activity android:name=".controller.MainActivity">
+        <activity android:name=".controller.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,11 +32,16 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".controller.LoginActivity" />
-        <activity android:name=".controller.AddStoryDate" />
-        <activity android:name=".controller.AddItemDate" />
-        <activity android:name=".controller.PlayActivity" />
-        <activity android:name=".controller.AnimationActivity"></activity>
+        <activity android:name=".controller.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".controller.AddStoryDate"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".controller.AddItemDate"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".controller.PlayActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".controller.AnimationActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

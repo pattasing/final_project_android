@@ -9,6 +9,7 @@
     <ImageView
         android:id="@+id/imageIconAnimation"
         android:layout_width="55dp"
+        android:background="@drawable/border_image"
         android:layout_height="55dp"
         android:layout_marginEnd="88dp"
         android:layout_marginStart="180dp"

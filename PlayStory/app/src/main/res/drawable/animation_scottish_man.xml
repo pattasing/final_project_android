@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false" >
+
+    <item
+        android:drawable="@drawable/scottish_man1"
+        android:duration="250" />
+
+    <item
+        android:drawable="@drawable/scottish_man2"
+        android:duration="250" />
+
+    <item
+        android:drawable="@drawable/scottish_man3"
+        android:duration="250" />
+
+    <item
+        android:drawable="@drawable/scottish_man4"
+        android:duration="250" />
+
+</animation-list>
