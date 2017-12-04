@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import kmitl.playstory.pattasing.playstory.R;
+import kmitl.playstory.pattasing.playstory.controller.AnimationActivity;
 import kmitl.playstory.pattasing.playstory.controller.MyDiaryTable;
 import kmitl.playstory.pattasing.playstory.controller.PlayActivity;
 
@@ -51,7 +52,7 @@ public class ItemDayAdapter extends RecyclerView.Adapter<HolderDay>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, PlayActivity.class);
+                Intent intent = new Intent(context, AnimationActivity.class);
                 intent.putExtra("datePlay", textDay);
                 context.startActivities(new Intent[]{intent});
             }

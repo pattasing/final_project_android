@@ -42,7 +42,7 @@ public class IconTimeAdapter extends RecyclerView.Adapter<Holder>{
     }
 
     @Override
-    public void onBindViewHolder(Holder holder, final int position) {
+    public void onBindViewHolder(final Holder holder, final int position) {
         ImageView imageIcon = holder.imageIcon;
         String imageUrl = iconList.get(position);
         Glide.with(context).load(imageUrl).into(imageIcon);

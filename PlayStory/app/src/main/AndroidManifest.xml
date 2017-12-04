@@ -34,7 +34,8 @@
         <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.AddStoryDate" />
         <activity android:name=".controller.AddItemDate" />
-        <activity android:name=".controller.PlayActivity"></activity>
+        <activity android:name=".controller.PlayActivity" />
+        <activity android:name=".controller.AnimationActivity"></activity>
     </application>
 
 </manifest>

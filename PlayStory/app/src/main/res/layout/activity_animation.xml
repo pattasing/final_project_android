@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f3ce"
+    tools:context="kmitl.playstory.pattasing.playstory.controller.AnimationActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/label_bar_animation"
+        android:layout_width="435dp"
+        android:layout_height="46dp"
+        android:background="#626D71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </android.support.v4.view.ViewPager>
+
+    <TextView
+        android:id="@+id/dateAnima"
+        android:layout_width="255dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/waffle_regular"
+        android:gravity="center|left"
+        android:text="Date"
+        android:textColor="#ddbc95"
+        android:textSize="40dp"
+        app:layout_constraintStart_toStartOf="@+id/label_bar_animation"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/label_bar_low_anima"
+        android:layout_width="492dp"
+        android:layout_height="40dp"
+        android:background="#626D71"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textBackAnima"
+        android:layout_width="182dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="88dp"
+        android:background="@drawable/border_image"
+        android:fontFamily="@font/waffle_regular"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:onClick="buttonBackAnima"
+        android:text="Back"
+        android:textColor="#f1f3ce"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/label_bar_low_anima" />
+
+    <ListView
+        android:id="@+id/listItemIconTime"
+        android:layout_width="338dp"
+        android:layout_height="238dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="#dfddbc95"
+        app:layout_constraintBottom_toTopOf="@+id/textBackAnima"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="328dp"
+        android:layout_height="334dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/message_box" />
+
+    <TextView
+        android:id="@+id/textViewTimeAnima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="68dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textViewLocationAnima"
+        android:layout_width="208dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimeAnima" />
+
+    <TextView
+        android:id="@+id/textViewMessageAnima"
+        android:layout_width="204dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLocationAnima" />
+
+    <ImageView
+        android:id="@+id/imageAnimation"
+        android:layout_width="43dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/ainmation_scottish"
+        app:layout_constraintStart_toStartOf="@+id/listItemIconTime"
+        app:layout_constraintTop_toTopOf="@+id/listItemIconTime" />
+
+</android.support.constraint.ConstraintLayout>

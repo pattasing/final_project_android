@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import kmitl.playstory.pattasing.playstory.R;
