@@ -153,7 +153,7 @@ public class AddItemDate extends AppCompatActivity {
 
         if(itemTime.getTime() == null || itemTime.getLocation() == null ||
                 itemTime.getMessage() == null || itemTime.getIconUrl() == null){
-            Toast.makeText(this, "Null", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "You Have Empty Field", Toast.LENGTH_LONG).show();
         }
         else{
             Intent intent = new Intent(this, AddStoryDate.class);

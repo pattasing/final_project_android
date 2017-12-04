@@ -147,7 +147,7 @@ public class AddStoryDate extends AppCompatActivity {
         System.out.println(myDiary.getCharacter());
 
         if(dateDiary == null || selectIconTime.getUrlIconCha() == null || itemTimeList.getItemTimeList() == null){
-            Toast.makeText(this, "null", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "You Have Empty Field", Toast.LENGTH_LONG).show();
         }
         else{
             myDiary.setDate(dateDiary);
