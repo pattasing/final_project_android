@@ -17,7 +17,6 @@ import kmitl.playstory.pattasing.playstory.R;
 import kmitl.playstory.pattasing.playstory.controller.AnimationActivity;
 import kmitl.playstory.pattasing.playstory.controller.MainActivity;
 import kmitl.playstory.pattasing.playstory.controller.MyDiaryTable;
-import kmitl.playstory.pattasing.playstory.controller.PlayActivity;
 
 public class ItemDayAdapter extends RecyclerView.Adapter<HolderDay>{
     private List<MyDiaryTable> itemDayList;

@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PlayStory.iml" filepath="$PROJECT_DIR$/PlayStory.iml" />
       <module fileurl="file://C:\Users\patta\Desktop\eiei\final_project_android\PlayStory\PlayStory.iml" filepath="C:\Users\patta\Desktop\eiei\final_project_android\PlayStory\PlayStory.iml" />
+      <module fileurl="file://C:\Users\patta\Desktop\FinalMobile\final_project_android\PlayStory\PlayStory.iml" filepath="C:\Users\patta\Desktop\FinalMobile\final_project_android\PlayStory\PlayStory.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\patta\Desktop\FinalMobile\final_project_android\PlayStory\app\app.iml" filepath="C:\Users\patta\Desktop\FinalMobile\final_project_android\PlayStory\app\app.iml" />
       <module fileurl="file://C:\Users\patta\Desktop\eiei\final_project_android\PlayStory\app\app.iml" filepath="C:\Users\patta\Desktop\eiei\final_project_android\PlayStory\app\app.iml" />
     </modules>
   </component>

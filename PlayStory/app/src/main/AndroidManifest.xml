@@ -37,8 +37,6 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".controller.AddItemDate"
             android:screenOrientation="portrait"/>
-        <activity android:name=".controller.PlayActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name=".controller.AnimationActivity"
             android:screenOrientation="portrait"></activity>
     </application>

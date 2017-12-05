@@ -8,8 +8,6 @@ import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
@@ -21,9 +19,7 @@ import java.util.List;
 
 import kmitl.playstory.pattasing.playstory.R;
 import kmitl.playstory.pattasing.playstory.adapter.CustomListItemAdapter;
-import kmitl.playstory.pattasing.playstory.adapter.IconTimeAnimationAdapter;
 import kmitl.playstory.pattasing.playstory.model.IconChaList;
-import kmitl.playstory.pattasing.playstory.model.SelectTimeToShow;
 
 public class AnimationActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
