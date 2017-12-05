@@ -9,9 +9,6 @@ import java.util.List;
 @Dao
 public interface MyDiaryDAO {
 
-    @Query("SELECT * FROM MYDIARY")
-    List<MyDiaryTable> getAll();
-
     @Insert
     void insert(MyDiaryTable myDiaryTable);
 
