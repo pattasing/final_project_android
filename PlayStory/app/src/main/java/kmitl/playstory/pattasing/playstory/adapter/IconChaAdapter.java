@@ -16,6 +16,7 @@ import java.util.List;
 
 import kmitl.playstory.pattasing.playstory.R;
 import kmitl.playstory.pattasing.playstory.model.SelectIconTime;
+import kmitl.playstory.pattasing.playstory.view.IconChaFragment;
 
 public class IconChaAdapter extends RecyclerView.Adapter<ChaHolder>{
 
