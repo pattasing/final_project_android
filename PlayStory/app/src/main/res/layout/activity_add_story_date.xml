@@ -137,8 +137,8 @@
             <ImageView
                 android:background="@drawable/border_time"
                 android:id="@+id/imageInAddIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="28dp"
                 android:onClick="buttonAddIcon"
@@ -153,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="40dp"
+
                 android:layout_alignParentLeft="true"
                 android:fontFamily="@font/waffle_regular"
                 android:text="Story : "
@@ -165,7 +165,6 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="40dp"
                 android:onClick="buttonAddTimeStory"
                 app:srcCompat="@mipmap/add" />
 
