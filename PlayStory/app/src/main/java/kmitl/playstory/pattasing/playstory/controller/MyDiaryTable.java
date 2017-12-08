@@ -3,10 +3,11 @@ package kmitl.playstory.pattasing.playstory.controller;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "MYDIARY")
 public class MyDiaryTable {
-
+    @NonNull
     @PrimaryKey(autoGenerate = true)
     int id;
 
