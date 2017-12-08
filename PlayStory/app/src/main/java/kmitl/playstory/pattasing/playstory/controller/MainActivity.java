@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             protected List<MyDiaryTable> doInBackground(Void... voids) {
                 List<MyDiaryTable> myDiaryTableList = myDiaryDB.getMyDiaryDAO().getDateAndCha(userEmail);
                 myDiaryTableListGlobal = myDiaryTableList;
-                System.out.println("doinbackground :"+ myDiaryTableListGlobal.size());
+//                System.out.println("doinbackground :"+ myDiaryTableListGlobal.);
                 return myDiaryTableList;
             }
 
@@ -129,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                 itemDayAdapter.setItemDayList(myDiaryTableListGlobal);
                 recyclerView.setAdapter(itemDayAdapter);
-                System.out.println("aaaaaaaaaaa :"+ userEmail);
-                System.out.println("aaaaaaaaaaa :"+ myDiaryTableListGlobal.size());
             }
         }.execute();
     }

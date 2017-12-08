@@ -12,10 +12,13 @@ public interface MyDiaryDAO {
     @Insert
     void insert(MyDiaryTable myDiaryTable);
 
-//    @Query("SELECT DISTINCT DATE,CHARACTER FROM MYDIARY WHERE EMAIL LIKE :userEmail")
+//    @Query("SELECT DISTINCT DATE, CHARACTER, id FROM MYDIARY WHERE EMAIL LIKE :userEmail")
 //    public abstract List<MyDiaryTable> getDateAndCha(String userEmail);
 
-    @Query("SELECT * FROM MYDIARY WHERE EMAIL LIKE :userEmail")
+//    @Query("SELECT * FROM MYDIARY WHERE EMAIL LIKE :userEmail")
+//    public abstract List<MyDiaryTable> getDateAndCha(String userEmail);
+
+    @Query("SELECT DATE, CHARACTER, id FROM MYDIARY WHERE EMAIL LIKE :userEmail GROUP BY DATE")
     public abstract List<MyDiaryTable> getDateAndCha(String userEmail);
 
     @Query("SELECT * FROM MYDIARY WHERE EMAIL LIKE :userEmail AND DATE LIKE :date")
